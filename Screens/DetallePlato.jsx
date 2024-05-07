@@ -1,20 +1,37 @@
 
-import React from 'react'
+import React, { useContext } from 'react'
 import { View, Text } from 'react-native'
 import GlobalStyles from '../styles/globalStyles';
-import { NativeBaseProvider, Avatar, List } from 'native-base';
+import { NativeBaseProvider, Avatar, List, Button } from 'native-base';
+import PedidoContext from '../context/pedidos/pedidoContext';
+import { Box, Container, HStack} from 'native-base'
+import { Card } from 'react-native-paper'
+import { useNavigation } from '@react-navigation/native';
 
-const DetallePlato = ({ route }) => {
-    const { platillo } = route.params; // Obtener el platillo de los parámetros de navegación
+const DetallePlato = () => {
+    const { platillo } = useContext(PedidoContext)
+    const { imagen, nombre, descripcion, categoria, id, precio } = platillo
+    const navigate = useNavigation()
 
     return (
-        <View>
-            <Avatar size="70px" source={{ uri: platillo.imagen }} />
-            <Text style={GlobalStyles.texto}>Nombre: {platillo.nombre}</Text>
-            <Text style={GlobalStyles.texto}>Descripción: {platillo.descripcion}</Text>
-            <Text style={GlobalStyles.texto}>Categoría: {platillo.categoria}</Text>
-            <Text style={GlobalStyles.texto}>Precio: {platillo.precio}</Text>
-        </View>
+        <Box style = {GlobalStyles.contenedor}>
+            <Text style= {GlobalStyles.texto}>{nombre}</Text>
+            <Card>
+                <Card.Cover source={{ uri:imagen}}></Card.Cover>
+                <Card.Content>
+                    <Text style= {GlobalStyles.texto}>La categoria es: {categoria}</Text>
+                    <Text style= {GlobalStyles.texto}>{descripcion}</Text>
+                    <Text style= {GlobalStyles.texto}>{precio}</Text>
+                </Card.Content>
+                <Card.Actions>
+                    <Button
+                        onPress={() => navigate.navigate('FormularioPlato')}
+                    >
+                        <Text>Ordenar</Text>
+                    </Button>
+                </Card.Actions>
+            </Card>
+        </Box>
     );
 }   
 

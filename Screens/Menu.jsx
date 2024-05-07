@@ -4,7 +4,7 @@ import GlobalStyles from '../styles/globalStyles';
 import { useNavigation } from '@react-navigation/native';
 import FirebaseContext from '../context/firebase/firebaseContext';
 import PedidoContext from '../context/pedidos/pedidoContext';
-import { NativeBaseProvider, Avatar, List } from 'native-base';
+import { NativeBaseProvider, Avatar, List, PlayIcon } from 'native-base';
 import { ScrollView } from 'react-native-gesture-handler';
 
 const Menu = () => {
@@ -43,7 +43,7 @@ const Menu = () => {
                                     style={{ flexDirection: 'row', alignItems: 'center', marginVertical: 5 }}
                                     onPress={() => {
                                         seleccionarPlatillo(platillo);
-                                        navigation.navigate("DetallePlato", { platillo }); // Pasar platillo como parámetro
+                                        navigation.navigate('DetallePlato');
                                     }}
                                 >
                                     <Avatar size="70px" source={{ uri: imagen }} />
@@ -52,6 +52,7 @@ const Menu = () => {
                                         description={descripcion}
                                     >
                                         <Text style={GlobalStyles.texto}>{nombre}</Text>
+                                        
                                     </List.Item>
                                 </TouchableOpacity>
                             </Fragment>

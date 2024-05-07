@@ -2,7 +2,9 @@ import React, { useReducer } from "react";
 import firebase from "../../firebaseDB";
 import PedidoContext from "./pedidoContext";
 import PedidoReducer from "./pedidoReducer";
-import { SELECCIONAR_PRODUCTOS } from "../../types";
+import { SELECCIONAR_PRODUCTOS,
+        GUARGAR_PEDIDO } 
+        from "../../types";
 
 const PedidoState = props => {
     //Crear el estado inicial
@@ -22,12 +24,20 @@ const PedidoState = props => {
         })
     } 
 
+    const guardarPedido = pedido => {
+        dispatch({
+            type: GUARGAR_PEDIDO,
+            payload: pedido
+        })
+    }
+
     return(
         <PedidoContext.Provider 
         value={{
             pedido: state.pedido,
             platillo: state.platillo,
-            seleccionarPlatillo
+            seleccionarPlatillo,
+            guardarPedido
         }}
         >
             {props.children}

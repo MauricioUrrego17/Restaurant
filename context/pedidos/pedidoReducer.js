@@ -1,4 +1,4 @@
-import { SELECCIONAR_PRODUCTOS } from "../../types";
+import { GUARGAR_PEDIDO, SELECCIONAR_PRODUCTOS } from "../../types";
 
 export default (state, action) => {
 
@@ -7,6 +7,12 @@ export default (state, action) => {
             return{
                 ...state,
                 platillo: action.payload
+            }
+
+        case GUARGAR_PEDIDO:
+            return{
+                ...state,
+                pedido: action.payload
             }
 
         default:
