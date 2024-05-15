@@ -55,7 +55,7 @@ const Menu = () => {
                                         
                                     </List.Item>
                                 </TouchableOpacity>
-                            </Fragment>
+                            </Fragment>                           
                         )
                     })}
                 </View>

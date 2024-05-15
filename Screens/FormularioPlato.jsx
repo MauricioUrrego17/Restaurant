@@ -37,7 +37,7 @@ const FormularioPlato = () =>{
 
     //Confirmo la orden
     const confirmarOrden =()=>{
-        Alert.alert('¿Deseas confirmar lel pedido',
+        Alert.alert('¿Deseas confirmar el pedido',
         'Un pedido confirmado, no se puede modificar',
         [{
             text: 'Confirmar',

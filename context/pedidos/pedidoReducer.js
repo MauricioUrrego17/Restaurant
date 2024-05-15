@@ -1,4 +1,9 @@
-import { GUARGAR_PEDIDO, SELECCIONAR_PRODUCTOS } from "../../types";
+import { 
+        GUARGAR_PEDIDO, 
+        SELECCIONAR_PRODUCTOS,
+        MOSTRAR_RESUMEN,
+        ELIMINAR_PRODUCTO
+        } from "../../types";
 
 export default (state, action) => {
 
@@ -12,7 +17,19 @@ export default (state, action) => {
         case GUARGAR_PEDIDO:
             return{
                 ...state,
-                pedido: action.payload
+                pedido: [...state.pedido, action.payload]
+            }
+
+        case MOSTRAR_RESUMEN:
+            return{
+                ...state,
+                total: action.payload
+            }
+
+        case ELIMINAR_PRODUCTO:
+            return{
+                ...state,
+                pedido: state.pedido.filter(articulo => articulo.id !== action.payload)
             }
 
         default:

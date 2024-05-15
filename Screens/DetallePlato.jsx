@@ -15,10 +15,10 @@ const DetallePlato = () => {
 
     return (
         <Box style = {GlobalStyles.contenedor}>
-            <Text style= {GlobalStyles.texto}>{nombre}</Text>
             <Card>
                 <Card.Cover source={{ uri:imagen}}></Card.Cover>
                 <Card.Content>
+                    <Text style= {GlobalStyles.texto}>{nombre}</Text>
                     <Text style= {GlobalStyles.texto}>La categoria es: {categoria}</Text>
                     <Text style= {GlobalStyles.texto}>{descripcion}</Text>
                     <Text style= {GlobalStyles.texto}>{precio}</Text>
